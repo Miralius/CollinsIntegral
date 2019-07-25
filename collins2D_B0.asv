@@ -1,0 +1,11 @@
+function [Func] = collins2D_B0(c, d, n2, h1, h2, input, u, y, wavelength, C, D)
+k=2*pi/wavelength;
+if C~=0 || D~=0
+    expa=exp(1i*k*C*D*(u.*u)/2);
+else
+    expa=1;
+end
+u1=u;
+int=input.*expa;
+Func=sqrt(D)*int;
+end

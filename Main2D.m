@@ -20,12 +20,11 @@ figure
 image(angle(input),'CDataMapping','scaled');
 colormap(gray(255))
 % ----------------------------------------------------------
-% [output1] = ft(c, d, n2, h1, h2, input, x, y, B, wavelength);
-% [output] = lFr(output1, x, y, wavelength, B);
+[output] = collins2D(c, d, n2, h1, h2, input, x, y, wavelength, A, B, D);
 % --plots of output function--
-% figure
-% image(abs(output),'CDataMapping','scaled');
-% colormap(map)
-% figure
-% image(angle(output),'CDataMapping','scaled');
-% colormap(gray(255))
+figure
+image(abs(output),'CDataMapping','scaled');
+colormap(gray(255))
+figure
+image(angle(output),'CDataMapping','scaled');
+colormap(gray(255))

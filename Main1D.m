@@ -6,13 +6,13 @@ A=0; B=100; C=-0.01; D=0;
 if A*D-B*C~=1
     error ('The determinant of the ABCD matrix must be equal to 1');
 end
-n=1000;
-m=1000;
+n1=1000;
+n2=1000;
 % -----------------------------
 if (B~=0)
-    [x, input, h] = func1D(a, sigma, n);
+    [x, input, h] = func1D(a, sigma, n1);
 else
-    [x, input] = func1D_B0(b, sigma, m, D);
+    [x, input] = func1D_B0(b, sigma, n2, D);
 end
 figure
 plot(x,abs(input));
@@ -26,7 +26,7 @@ xlabel('x')
 ylabel('angle()')
 % -----------------------------
 if (B~=0)
-    [u, output] = collins1D(b, m, x, h, input, wavelength, A, B, D);
+    [u, output] = collins1D(b, n2, x, h, input, wavelength, A, B, D);
 else
     [u, output] = collins1D_B0(x, input, wavelength, C, D);
 end

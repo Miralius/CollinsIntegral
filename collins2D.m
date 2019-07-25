@@ -17,12 +17,15 @@ else
     expAxx=1;
     expAyy=1;
 end
-exp2xu=exp(-(2*pi*1i*xu)/(wavelength*z));
-exp2yv=exp(-(2*pi*1i*yv)/(wavelength*z));
+exp2xu=exp(-(1i*k*xu)/B);
+exp2yv=exp(-(1i*k*yv)/B);
 if D~=0
-    
+    expDuu=exp((D*1i*k*uu)/(2*B));
+    expDvv=exp((D*1i*k*vv)/(2*B));
+else
+    expDuu=1;
+    expDvv=1;
 end
-integral=exp2xu.'*input*expAxx*expAyy*exp2yv*h1*h2;
-expuuvv=exp((1i*pi*uu)/(wavelength*z))*exp((1i*pi*vv)/(wavelength*z));
-output=(-1i/(wavelength*z))*expuuvv*integral;
+integral=exp2xu.'*input*expAxx*expAyy*exp2yv*expDuu*expDvv*h1*h2;
+output=(-(1i*k)/(2*pi*B))*integral;
 end

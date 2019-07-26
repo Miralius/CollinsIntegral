@@ -4,7 +4,7 @@ c=1;
 d=1;
 sigma=0.5;
 wavelength=0.00065;
-A=1; B=0; C=0; D=1;
+A=1; B=1; C=0; D=1;
 if A*D-B*C~=1
     error ('The determinant of the ABCD matrix must be equal to 1');
 end

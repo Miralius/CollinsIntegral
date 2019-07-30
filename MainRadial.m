@@ -1,4 +1,4 @@
-radiusInput=5;
+radiusInput=1;
 radiusOutput=1;
 sigma=0.5;
 wavelength=0.00065;
@@ -6,7 +6,7 @@ A=0; B=100; C=-0.01; D=0;
 if A*D-B*C~=1
     error ('The determinant of the ABCD matrix must be equal to 1');
 end
-n1=1000;
+n1=20;
 n2=1000;
 % ----------------------------------------------------------
 if (B~=0)

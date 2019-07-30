@@ -8,7 +8,7 @@ func=(exp(-(r.*r)))/(2*sigma*sigma);
 input=zeros(n1,n1); 
 for j=1:n1
   for k=1:n1
-    xy_To_r=round(sqrt((j-(n1/2))^2+(k-(n1/2))^2));
+    xy_To_r=round(sqrt((j-(n1/2))^2+(k-(n1/2))^2)+1);
     if xy_To_r > n1/2
       input(j,k)=0;
     else 

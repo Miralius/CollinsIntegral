@@ -4,28 +4,12 @@ hh1=2*c/n2;
 u=-c:hh1:c-hh1;
 hh2=2*d/n2;
 v=-d:hh2:d-hh2;
-xu=x.'*u;
-yv=y.'*v;
-xx=x.'*x;
-yy=y.'*y;
-uu=u.'*u;
-vv=v.'*v;
-if A~=0
-    expAxx=exp((A*1i*k*xx)/(2*B));
-    expAyy=exp((A*1i*k*yy)/(2*B));
-else
-    expAxx=1;
-    expAyy=1;
-end
-exp2xu=exp(-(1i*k*xu)/B);
-exp2yv=exp(-(1i*k*yv)/B);
-if D~=0
-    expDuu=exp((D*1i*k*uu)/(2*B));
-    expDvv=exp((D*1i*k*vv)/(2*B));
-else
-    expDuu=1;
-    expDvv=1;
-end
-integral=exp2xu.'*input*expAxx*expAyy*exp2yv*expDuu*expDvv*h1*h2;
+xx=x'*x;
+yy=y'*y;
+uu=u'*u;
+vv=v'*v;
+expXU=exp(((1i*k)/(2*B))*(sqrt(A)*xx-sqrt(D)*uu)^2);
+expYV=exp(((1i*k)/(2*B))*(sqrt(A)*yy-sqrt(D)*vv)^2);
+integral=input*expXU*expYV*h1*h2;
 output=(-(1i*k)/(2*pi*B))*integral;
 end

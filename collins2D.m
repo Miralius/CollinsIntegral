@@ -6,13 +6,17 @@ hh2=2*d/n2;
 v=-d:hh2:d-hh2;
 xu=x.'*u;
 yv=y.'*v;
-xx=x.'*x;
-yy=y.'*y;
-uu=u.'*u;
-vv=v.'*v;
+xx=x.*x;
+yy=y.*y;
+uu=u.*u;
+vv=v.*v;
 if A~=0
-    expAxx=exp((A*1i*k*xx)/(2*B));
-    expAyy=exp((A*1i*k*yy)/(2*B));
+    expAxx = zeros(n2,n2);
+    expAyy = zeros(n2,n2);
+    for i=1:n2 
+        expAxx(i,i)=exp((A*1i*k*xx(i))/(2*B));
+        expAyy(i,i)=exp((A*1i*k*yy(i))/(2*B));
+    end
 else
     expAxx=1;
     expAyy=1;
@@ -20,12 +24,16 @@ end
 exp2xu=exp(-(1i*k*xu)/B);
 exp2yv=exp(-(1i*k*yv)/B);
 if D~=0
-    expDuu=exp((D*1i*k*uu)/(2*B));
-    expDvv=exp((D*1i*k*vv)/(2*B));
+    expDuu = zeros(n2,n2);
+    expDvv = zeros(n2,n2);
+    for i=1:n2 
+        expDuu(i,i)=exp((A*1i*k*uu(i))/(2*B));
+        expDvv(i,i)=exp((A*1i*k*vv(i))/(2*B));
+    end
 else
     expDuu=1;
     expDvv=1;
 end
-integral=exp2yv.'*input*(expAxx.'*expAyy)*exp2xu*(expDuu.'*expDvv)*h1*h2;
+integral=input*(expAxx*expAyy)*exp2xu*exp2yv*(expDuu*expDvv)*h1*h2;
 output=(-(1i*k)/(2*pi*B))*integral;
 end

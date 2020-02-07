@@ -4,7 +4,7 @@ u=-c:hh1:c-hh1;
 hh2=2*d/n2;
 v=-d:hh2:d-hh2;
 %--------------------
-input1=(exp(-D*(u.*u))).';
-input2=(exp(-D*(v.*v)));
+input1=(exp(-D*D*(u.*u))).';
+input2=(exp(-D*D*(v.*v)));
 input=(input1*input2)/(2*sigma*sigma); %Gauss fan
 end

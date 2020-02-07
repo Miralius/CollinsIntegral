@@ -1,3 +1,4 @@
+%Function doesn't work correctly
 function [output] = collins2D(c, d, n2, h1, h2, input, x, y, wavelength, A, B, D)
 k=2*pi/wavelength;
 hh1=2*c/n2;
